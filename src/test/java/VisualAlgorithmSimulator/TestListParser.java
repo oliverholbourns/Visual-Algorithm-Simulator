@@ -19,4 +19,12 @@ public class TestListParser {
         //check that the correct values have been inserted into listOfValues
         Assertions.assertEquals(Arrays.asList(1, 2, 5, 8, 10, 12), listOfValues);
     }
+
+    @Test
+    public void TestInvalidList() {
+        ListParser listParser = new ListParser();
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            List<Integer> listOfValues = listParser.parseValues("1, 2, 5, hello, 10, 12");
+        });
+    }
 }
